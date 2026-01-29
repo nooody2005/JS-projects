@@ -7,18 +7,26 @@
 </head>
 <body>
     <p>Rock Paper Scissors</p>
-    <button onclick=" PlayGame('Rock');
-    ">Rock</button>
-    <button>Paper</button>
-    <button>Scissors</button>
+    <button onclick=" PlayGame('Rock');">Rock</button>
+    <button onclick=" PlayGame('Paper');">Paper</button>
+    <button onclick=" PlayGame('Scissors');">Scissors</button>
+    <button onclick="
+    score.wins=0;
+    score.loses=0;
+    score.ties=0;
+    localStorage.removeItem('score');
+    ">Resest Score</button>
 
     <script>
         let result="";
-        const score={
-            wins: 0,
-            loses : 0, 
-            ties : 0,
-        };
+        let score=JSON.parse(localStorage.getItem('score'));
+        if(score === null){
+            score ={
+                wins: 0,
+                loses: 0,
+                ties : 0
+            };
+        }
         let computerMove = "";
         function PlayGame(PlayMove){
             computerMove = PickComputerMove();
