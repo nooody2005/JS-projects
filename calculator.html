@@ -5,18 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>calculator project</title>
     <style>
-        
+        .cost-input{
+            padding: 10px;
+        }
+        .calculate-button{
+            border: none;
+            background-color: green;
+            color: white;
+            padding: 10px 15px;
+        }
     </style>
 </head>
 <body>
     <p>Amazon shipping calculator</p>
-    <input placeholder="Cost of order" class="js-cost-input" 
+    <input placeholder="Cost of order" class="js-cost-input cost-input" 
     onkeydown="
     if(event.key === 'Enter'){
         calculateTotal();
     }">
 
-    <button onclick="calculateTotal();">calculate</button>
+    <button onclick="calculateTotal(); " class="calculate-button" >calculate</button>
 
     <p class="js-total-cost"></p>
     <script>
