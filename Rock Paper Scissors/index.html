@@ -10,12 +10,16 @@
     <button onclick=" PlayGame('Rock');">Rock</button>
     <button onclick=" PlayGame('Paper');">Paper</button>
     <button onclick=" PlayGame('Scissors');">Scissors</button>
+
+    <p class="js-score"></p>
+
     <button onclick="
     score.wins=0;
     score.loses=0;
     score.ties=0;
     localStorage.removeItem('score');
-    ">Resest Score</button>
+    updateScore();
+    ">Reset Score</button>
 
     <script>
         let result="";
@@ -27,40 +31,41 @@
                 ties : 0
             };
         }
-        let computerMove = "";
+        // let computerMove = "";
+
         function PlayGame(PlayMove){
-            computerMove = PickComputerMove();
+            let computerMove = PickComputerMove();
             if (PlayMove === "Rock"){
                  if (computerMove === 'Rock'){
                     result = 'Tie';  
                 }
                 else if (computerMove === 'Paper'){
-                    result = 'you lose'
+                    result = 'you lose';
                 }
                 else if (computerMove === 'Scissors'){
-                    result = 'you win'
+                    result = 'you win';
                 }
             }
             else if (PlayMove === "Paper"){
                 if (computerMove === 'Rock'){
-                    result = 'Tie';  
+                    result = 'you win';  
                 }
                 else if (computerMove === 'Paper'){
-                    result = 'you lose'
+                    result = 'Tie';
                 }
                 else if (computerMove === 'Scissors'){
-                    result = 'you win'
+                    result = 'you lose';
                 }    
             }
             else if (PlayMove === "Scissors"){
                 if (computerMove === 'Rock'){
-                    result = 'Tie';  
+                    result = 'you lose';  
                 }
                 else if (computerMove === 'Paper'){
-                    result = 'you lose'
+                    result = 'you win';
                 }
                 else if (computerMove === 'Scissors'){
-                    result = 'you win'
+                    result = 'Tie';
                 }
             }
 
@@ -74,7 +79,16 @@
                 score.ties +=1;
             }
             alert(`You picked ${PlayMove} ..computer picked ${computerMove} ..${result} wins: ${score.wins}  loses: ${score.loses} Ties: ${score.ties}`);
+
+            localStorage.setItem('score',JSON.stringify(score));
+
+            updateScore();
         }
+         function updateScore()
+            {
+                document.querySelector('.js-score').innerHTML=`wins: ${score.wins} loses: ${score.loses} ties: ${score.ties}`;
+
+            }
         function PickComputerMove(){
             let computerMove    ='';
 
