@@ -11,6 +11,8 @@
     <button onclick=" PlayGame('Paper');">Paper</button>
     <button onclick=" PlayGame('Scissors');">Scissors</button>
 
+    <p class="js-result"></p>
+    <p class="js-moves"></p>
     <p class="js-score"></p>
 
     <button onclick="
@@ -78,10 +80,16 @@
             else if(result === 'Tie'){
                 score.ties +=1;
             }
+            function updateHappened(){
+                document.querySelector('.js-result').innerHTML=result;
+                document.querySelector('.js-moves').innerHTML=`You picked ${PlayMove} ..computer picked ${computerMove}`;
+            }
+
             alert(`You picked ${PlayMove} ..computer picked ${computerMove} ..${result} wins: ${score.wins}  loses: ${score.loses} Ties: ${score.ties}`);
 
             localStorage.setItem('score',JSON.stringify(score));
 
+            updateHappened();
             updateScore();
         }
          function updateScore()
