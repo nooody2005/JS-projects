@@ -1,0 +1,45 @@
+.body{
+    font-family: Arial;
+}
+.todo-project{
+    font-weight: bold;
+    font-size: 40px;
+    margin-bottom: 30px;
+    color: rgb(24, 172, 78);
+    text-shadow:
+            -1px -1px 0 #000,
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000;
+    
+    /* text-align: center; */
+}
+.todo-grid,
+.todo-input-grid{
+    display: grid;
+    /* grid-template-columns: repeat(autofill,minmax(250px,3fr)); */
+    /* grid-template-columns: 1fr minmax(120px, 150px) 80px; */
+    grid-template-columns: 200px 150px 100px;
+    gap: 10px;
+    align-items: center;
+    
+}
+.todo-input-grid{
+    margin-bottom:10px;
+    align-items: stretch;
+}
+.input-name,
+.input-date{
+    font-size: 15px;
+    padding: 6px;
+
+}
+.add-btn{
+    background-color: green;
+    color: white;
+    font-weight: bold;
+}
+.delete-btn{
+    background-color: red;
+    color: white;
+}
