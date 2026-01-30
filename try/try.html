@@ -20,8 +20,61 @@
     document.getElementById("result").innerHTML = `n: ${n}`;
     // console.log( `n: ${n}`);
   }
+  setTimeout(function(){
+  alert('Hello after 3 seconds!');
+}, 3000);
 
 
+setTimeout(function(){
+  document.body.innerHTML = 'Done!';
+}, 2000);
+
+
+setInterval(function(){
+  const now = new Date();
+  console.log(now.toLocaleTimeString());
+}, 1000);
+
+
+  setInterval(function(){
+  document.body.style.backgroundColor =
+    `rgb(${Math.random()*255}, ${Math.random()*255}, ${Math.random()*255})`;
+}, 1000);
+
+
+  setTimeout(function(){
+    
+  });
+  setInterval(function(){
+
+  },3000);
+
+  const arrowFunction = () => {
+    console.log('hello');
+  };
+
+  const oneParam = param => {
+    console.log(param + 1);
+  };
+  oneParam(2);
+
+  const oneLine = () => { return 2 + 3; };
+  // const oneLine = () => 2 + 3;
+
+  const eventListener = () => {
+    console.log('click');
+  }
+  buttonElement.addEventListener('click',eventListener);
+
+  buttonElement.removeEventListener('click',eventListener);
+
+console.log([1,-3,5].filter((value,index) => {
+  return value >= 0;
+}));  //creates a new arr & return true --> put value in arr || return false --> not put value in array 
+
+[1,2,3].map((value,index) => {
+  return
+}); //creates a new arr & whatever we return --> added to new arr 
 
 </script>
 
