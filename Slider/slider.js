@@ -8,7 +8,7 @@ var slidesCount=sliderImages.length;
 var currentSlide=1;
 
 //Slide Number Element
-var SlideNumberElement = document.getElementById('slide-number');
+var slideNumberElement = document.getElementById('slide-number');
 
 //previous and Next
 var nextButton =document.getElementById('next');
@@ -17,16 +17,6 @@ var prevButton= document.getElementById('prev');
 //Handle Click on previous and Next Buttons
 nextButton.onclick= nextSLide;
 prevButton.onclick= prevSlide;
-
-//Next Slide funciton
-function nextSLide(){
-    console.log('Next');
-}
-
-//previous Slide function
-function prevSlide(){
-    console.log('Previous');
-}
 
 //Create The main UL Element 
 var paginationElement= document.createElement('ul');
@@ -52,3 +42,32 @@ for(var i=1; i<=slidesCount; i++){
 
 //Add the Created UL Element to the page
 document.getElementById('indicators').appendChild(paginationElement);
+
+//Get The New Created UL
+// var paginationCreatedUl=document.getElementById('pagination-ul');
+
+//Next Slide funciton
+function nextSLide(){
+    console.log('Next');
+}
+
+//previous Slide function
+function prevSlide(){
+    console.log('Previous');
+}
+
+// Create THe Checker Function
+function theChecker(){
+
+    //Set the Slide Number
+    slideNumberElement.textContent='Slide # ' +(currentSlide) + ' of ' + (slidesCount);
+    
+    //set Active Class on Current Slide
+    sliderImages[currentSlide - 1].classList.add('active');
+
+    //set Active Class on Current Pagination Item 
+    paginationElement.children[currentSlide - 1].classList.add('active');
+    // paginationCreatedUl.children[currentSlide - 1].classList.add('active');
+}
+
+theChecker();
