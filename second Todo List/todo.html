@@ -4,15 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo App</title>
+    <link rel="stylesheet" href="todo.css">
 </head>
 <body>
     <div class="todo-container">
         <div class="add-task">
-            <input type="text">
+            <input type="text" placeholder="add task">
             <span class="plus">+</span>
         </div>
         <div class="task-content">
             <span class="no-tasks-message">No Tasks To Show</span>
+            <span class="task-box">
+                Task 1 
+                <span class="delete">Delete</span>
+            </span>
+            <span class="task-box">
+                Task 2
+                <span class="delete">Delete</span>
+            </span>
         </div>
     </div>
     <div class="task-stats">
@@ -24,5 +33,6 @@
         </div>
     </div>
 
+    <script src="todo.js"></script>
 </body>
 </html>
