@@ -47,7 +47,7 @@
  .slider-controls .prev,
  .slider-controls .next{
     position: absolute;
-    background-color: rgb(201, 199, 199);
+    background-color: rgb(132, 132, 132);
     color: white;
     font-weight: bold;
     border: 2px solid rgb(89, 87, 87);
@@ -70,7 +70,7 @@
 .slider-controls .prev.disabled,
 .slider-controls .next.disabled
 {
-    background-color:rgb(132, 132, 132); 
+    background-color:rgb(201, 199, 199);
     cursor: no-drop;
 }
 .slider-controls .indicators{

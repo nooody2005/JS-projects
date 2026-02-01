@@ -46,6 +46,30 @@ document.getElementById('indicators').appendChild(paginationElement);
 //Get The New Created UL
 // var paginationCreatedUl=document.getElementById('pagination-ul');
 
+// Get Pagination Items | Array.from[ES6 Feature]
+ var BaginatoinBullets = Array.from(document.querySelectorAll('#pagination-ul li'));
+
+ // Trigger The Checker function
+ theChecker();
+
+//check if we on the first slide 
+if(currentSlide == 1){
+    //first slide --->make previous button disabled
+    prevButton.classList.add('disabled');
+}
+else{ 
+    prevButton.classList.remove('disabled');
+}
+
+//check if we on the Last slide 
+if(currentSlide == slidesCount){
+    //Last slide --->make Next button disabled
+    nextButton.classList.add('disabled');
+}
+else{
+    nextButton.classList.remove('disabled');
+}
+
 //Next Slide funciton
 function nextSLide(){
     console.log('Next');
@@ -62,6 +86,7 @@ function theChecker(){
     //Set the Slide Number
     slideNumberElement.textContent='Slide # ' +(currentSlide) + ' of ' + (slidesCount);
     
+    removeAllActive();
     //set Active Class on Current Slide
     sliderImages[currentSlide - 1].classList.add('active');
 
@@ -70,4 +95,22 @@ function theChecker(){
     // paginationCreatedUl.children[currentSlide - 1].classList.add('active');
 }
 
-theChecker();
+// Remove All Active Classes from Slides Images and Pagination Bullets
+function removeAllActive(){
+    //Loop through Images
+    sliderImages.forEach(function(img){
+        img.classList.remove('active');
+    });
+
+    //Loop through Pagination Items 
+    BaginatoinBullets.forEach(function(bullet){
+        bullet.classList.remove('active');
+    });
+}
+
+
+
+
+
+
+
