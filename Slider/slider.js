@@ -47,37 +47,54 @@ document.getElementById('indicators').appendChild(paginationElement);
 // var paginationCreatedUl=document.getElementById('pagination-ul');
 
 // Get Pagination Items | Array.from[ES6 Feature]
- var BaginatoinBullets = Array.from(document.querySelectorAll('#pagination-ul li'));
+ var paginatoinBullets = Array.from(document.querySelectorAll('#pagination-ul li'));
+
+ //Loop Through All Bullets Items
+for (let i=0; i<paginatoinBullets.length; i++){
+    paginatoinBullets[i].onclick = function(){
+        currentSlide = i + 1;
+        theChecker();
+    }
+}
+
+// for (var i=0; i<paginatoinBullets.length; i++){
+//     paginatoinBullets[i].onclick= function() {
+//         currentSlide=parseInt(this.getAttribute('data-index'));
+//          theChecker();
+//     }
+// }
+
 
  // Trigger The Checker function
  theChecker();
 
-//check if we on the first slide 
-if(currentSlide == 1){
-    //first slide --->make previous button disabled
-    prevButton.classList.add('disabled');
-}
-else{ 
-    prevButton.classList.remove('disabled');
-}
-
-//check if we on the Last slide 
-if(currentSlide == slidesCount){
-    //Last slide --->make Next button disabled
-    nextButton.classList.add('disabled');
-}
-else{
-    nextButton.classList.remove('disabled');
-}
-
 //Next Slide funciton
 function nextSLide(){
-    console.log('Next');
+    if(nextButton.classList.contains('disabled'))
+    {
+        // do nothing
+        return false;
+    }
+    else{
+        currentSlide++;
+        theChecker();
+    }
+    // if(currentSlide == slidesCount){
+    //     //do nothing
+    //     return false;
+    // }
 }
 
 //previous Slide function
 function prevSlide(){
-    console.log('Previous');
+    if(prevButton.classList.contains('disabled')){
+        // do nothing
+        return false;
+    }
+    else{
+        currentSlide--;
+        theChecker();
+    }
 }
 
 // Create THe Checker Function
@@ -93,6 +110,25 @@ function theChecker(){
     //set Active Class on Current Pagination Item 
     paginationElement.children[currentSlide - 1].classList.add('active');
     // paginationCreatedUl.children[currentSlide - 1].classList.add('active');
+
+    //check if we on the first slide 
+    if(currentSlide == 1){
+        //first slide --->make previous button disabled
+        prevButton.classList.add('disabled');
+    }
+    else{ 
+        prevButton.classList.remove('disabled');
+    }
+
+    //check if we on the Last slide 
+    if(currentSlide == slidesCount){
+        //Last slide --->make Next button disabled
+        nextButton.classList.add('disabled');
+    }
+    else{
+        nextButton.classList.remove('disabled');
+    }
+
 }
 
 // Remove All Active Classes from Slides Images and Pagination Bullets
@@ -103,10 +139,11 @@ function removeAllActive(){
     });
 
     //Loop through Pagination Items 
-    BaginatoinBullets.forEach(function(bullet){
+    paginatoinBullets.forEach(function(bullet){
         bullet.classList.remove('active');
     });
 }
+
 
 
 
