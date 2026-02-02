@@ -59,3 +59,21 @@ theAddButton.onclick= function(){
     //As soon As adding the task the input will be empty
     theInput.value='';
 };
+
+document.addEventListener('click',function(e){
+    //Delete Task
+
+    if(e.target.className =='delete'){
+        e.target.parentElement.remove();
+    }
+
+    // if (e.target.classList.contains('delete')) {
+    //     e.target.parentElement.remove();
+    // }
+  
+    //make the task finished
+    if(e.target.classList.contains('task-box')){
+        e.target.classList.toggle('finished');
+    }
+
+});

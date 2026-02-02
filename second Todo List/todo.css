@@ -72,8 +72,11 @@ body{
     padding: 5px;
     border-radius: 7px;
     cursor: pointer;
-   text-align: center;
-   float: right;
+    text-align: center;
+    float: right;
+}
+.todo-container .task-content>span.finished{
+    text-decoration: line-through;
 }
 .task-stats{
     width: 600px;
