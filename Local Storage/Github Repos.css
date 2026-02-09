@@ -35,6 +35,7 @@ body{
     line-height: 65px;
     font-weight: bold;
     text-align: center;
+    cursor: pointer;
 }
 .repos-container .show-data{
     width: 800px;
