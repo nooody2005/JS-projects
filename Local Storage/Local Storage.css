@@ -44,3 +44,7 @@ body{
     color: rgb(71, 167, 165);
     font-weight: bold;
 }
+
+.container .result span.items {
+    display: block;
+}
