@@ -1,0 +1,46 @@
+* {
+    box-sizing: border-box;
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.container{
+    width: 600px;
+    margin:30px auto;
+    background-color: #f1eeee;
+    padding: 20px;
+}
+.container .content input{
+    width: 100%;
+    margin-bottom:20px;
+    border: none;
+    font-size: 20px;
+    padding: 10px;
+    outline: none;
+}
+.container .content .buttons{
+    display: flex;
+    gap: 40px;
+    margin-bottom: 20px;
+}
+.container .content .buttons span{
+    flex-basis: 25%;
+    /* flex: 25%; */
+    background-color: rgb(71, 167, 165);
+    padding: 9px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+
+}
+.container .result{
+    background-color: #fff;
+    padding: 20px;
+    text-align: center;
+    border: 2px dashed #eee;
+}
+.container .result span span{
+    color: rgb(71, 167, 165);
+    font-weight: bold;
+}
