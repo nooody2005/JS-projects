@@ -34,6 +34,20 @@ function getRepos(){
             //append repos name in the main div
             mainDiv.appendChild(repoName);
 
+            //Create stars element
+            let stars=document.createElement('span');
+
+            //create the stars count
+            let starsText=document.createTextNode(` Strars ${repo.stargazers_count}`);
+
+            //append star count to stars span
+            stars.appendChild(starsText);
+
+            stars.className='stars';
+
+            //Append stars to main div
+            mainDiv.appendChild(stars);
+
             //create the Url
             let theUrl=document.createElement('a');
 
@@ -45,6 +59,9 @@ function getRepos(){
 
             //make the url
             theUrl.href=`https://github.com/nooody2005/${repo.name}`;
+
+            //Add class on Main Div
+            mainDiv.className='repo-box';
 
             //Set Attribut Blank --> opened in new page
             theUrl.setAttribute('target','_blank');

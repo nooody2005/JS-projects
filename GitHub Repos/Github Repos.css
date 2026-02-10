@@ -38,11 +38,41 @@ body{
     cursor: pointer;
 }
 .repos-container .show-data{
-    width: 800px;
-    margin: auto;
-    background-color: rgb(201, 199, 199);
-    text-align: center;
+    /* margin: auto; */
+    background-color: rgb(227, 225, 225);
+    /* text-align: center; */
     padding: 20px;
     font-size: 20px;
    color: rgb(81, 80, 80);
+}
+
+.repos-container .show-data .repo-box{
+    background-color: white;
+    padding: 20px;
+    color: #4f4646;
+    font-size: 25px;
+    font-weight: bold; 
+}
+/* .repos-container .show-data .repo-box div{
+    float: left;
+} */
+.repos-container .show-data .repo-box:not(:last-child){
+    margin-bottom: 20px;
+}
+.repos-container .show-data .repo-box .stars,
+.repos-container .show-data .repo-box a {
+    color: white;
+    font-weight: bold;
+    float: right;
+    text-decoration: none;
+    padding: 10px;
+    margin-left: 15px;
+    text-align: center;
+    font-size: 15px;
+}
+.repos-container .show-data .repo-box .stars{
+    background-color: rgb(84, 237, 186);
+}
+.repos-container .show-data .repo-box a{
+    background-color: rgb(237, 84, 84);
 }
