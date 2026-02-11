@@ -1,8 +1,11 @@
 //Create the variables
 let countSpan=document.querySelector('.count span');
-let bulletsContainer=document.querySelector('.bullets .spans')
+let bulletsContainer=document.querySelector('.bullets .spans');
+let question=document.querySelector('.question');
+let answers=document.querySelector('.answers');
 
 
+let currentQuestion=1;
 
 function getQuestions () {
   let myRequest = new XMLHttpRequest();
@@ -15,6 +18,9 @@ function getQuestions () {
 
         //Create Bullets + set questions count
         createBullets(questionsCount);
+
+        //get the quiz from json to show it on webPage
+        createQuesions(questionsObject[0],questionsCount);
     }
 
   };
@@ -41,5 +47,56 @@ function createBullets(num){
         bulletsContainer.appendChild(bullet);
     }
 
+}
 
+function createQuesions(obj,count){
+
+    //create the question place
+    let questionTitle=document.createElement('h2');
+
+    //get the question title from json
+    let questionText=document.createTextNode(obj.title);
+
+    //append question text in question div
+    questionTitle.appendChild(questionText);
+
+    //append question in the main container
+    question.appendChild(questionTitle);
+
+    for (let i=1; i<=4; i++){
+
+        //create choice div
+        let choice=document.createElement('div');
+        //add class 
+        choice.classList.add('choice');
+        //create radio
+        let radio=document.createElement('input');
+        //select radio type + id + name + text
+        radio.type='radio';
+        radio.id=`answer_${i}`;
+        radio.name='choice';
+        radio.dataset.answer=obj[`answer_${i}`];
+        // radio.dataset.answer=obj.answer_${i};
+
+        //make the first choice selected
+        if(i === 1){
+            radio.checked=true;
+        }
+
+        //make label for radio input
+        let label=document.createElement('label');
+        label.htmlFor=`answer_${i}`;
+
+        //create text for label
+        let labelText=document.createTextNode(obj[`answer_${i}`]);
+        label.appendChild(labelText);
+
+
+        //append radio in the choice div
+        choice.appendChild(radio);
+        choice.appendChild(label);
+
+        //append choice in answers div
+        answers.appendChild(choice);
+    }
 }
