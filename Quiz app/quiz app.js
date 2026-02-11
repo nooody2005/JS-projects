@@ -3,9 +3,12 @@ let countSpan=document.querySelector('.count span');
 let bulletsContainer=document.querySelector('.bullets .spans');
 let question=document.querySelector('.question');
 let answers=document.querySelector('.answers');
+let submitButton=document.querySelector('.submit-button');
+let resultMsg=document.querySelector('.result');
 
 
-let currentQuestion=1;
+let currentQuestion=0;
+let correctAnswers =0;
 
 function getQuestions () {
   let myRequest = new XMLHttpRequest();
@@ -20,7 +23,13 @@ function getQuestions () {
         createBullets(questionsCount);
 
         //get the quiz from json to show it on webPage
-        createQuesions(questionsObject[0],questionsCount);
+        createQuesions(questionsObject[currentQuestion],questionsCount);
+
+
+        submitButton.onclick = function (e) {
+            checkAnswer(questionsObject[currentQuestion].right_answer, questionsCount);
+        };
+
     }
 
   };
@@ -30,7 +39,6 @@ function getQuestions () {
 }
 
 getQuestions();
-
 
 function createBullets(num){
     countSpan.innerHTML=num;
@@ -71,7 +79,7 @@ function createQuesions(obj,count){
         choice.classList.add('choice');
         //create radio
         let radio=document.createElement('input');
-        //select radio type + id + name + text
+        //select radio type + id + name + text(dataset)
         radio.type='radio';
         radio.id=`answer_${i}`;
         radio.name='choice';
@@ -99,4 +107,24 @@ function createQuesions(obj,count){
         //append choice in answers div
         answers.appendChild(choice);
     }
+}
+
+function checkAnswer(rightAnswer,count){
+
+    let answers =document.getElementsByName("choice");
+    let theChoosenAnswer;
+
+    for(let i=0; i<answers.length; i++){
+
+        if(answers[i].checked){
+
+            theChoosenAnswer=answers[i].dataset.answer;
+        }
+    }
+    if(theChoosenAnswer == rightAnswer){
+        correctAnswers++;
+         resultMsg.innerHTML='<span class="perfect">perfect </span> you are good';
+    }
+
+
 }
