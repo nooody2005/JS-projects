@@ -27,7 +27,26 @@ function getQuestions () {
 
 
         submitButton.onclick = function (e) {
-            checkAnswer(questionsObject[currentQuestion].right_answer, questionsCount);
+
+            //get the right answer
+            let theRightAnswer=questionsObject[currentQuestion].right_answer;
+
+            //increase current index to move in the next question
+            currentQuestion++;
+
+            checkAnswer(theRightAnswer, questionsCount);
+
+            //remove previous question 
+            question.innerHTML='';
+            answers.innerHTML ='';
+
+
+            //get the next question
+            createQuesions(questionsObject[currentQuestion],questionsCount);
+
+            //handle Bullets class
+            hadleBullets();
+
         };
 
     }
@@ -121,10 +140,21 @@ function checkAnswer(rightAnswer,count){
             theChoosenAnswer=answers[i].dataset.answer;
         }
     }
-    if(theChoosenAnswer == rightAnswer){
+    if(theChoosenAnswer === rightAnswer){
         correctAnswers++;
          resultMsg.innerHTML='<span class="perfect">perfect </span> you are good';
     }
 
+}
+function hadleBullets(){
+    let bulletSpan=document.querySelectorAll(".bullets .spans span");
+    let arrayOfSpans=Array.from(bulletSpan);
 
+    arrayOfSpans.forEach((span,index) => {
+
+        if(currentQuestion === index){
+            span.className='on';
+        }
+    });
+    
 }
