@@ -1,0 +1,110 @@
+:root{
+    --main-color:rgb(239, 238, 238);
+    --sec-color:white;
+    --third-color:rgb(84, 168, 246);
+}
+*{
+    box-sizing: border-box;
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.container{
+    margin: 30px auto;
+    width: 800px;
+    background-color: var(--main-color);
+    padding: 15px;
+}
+.container .quiz-app .quiz-info{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    font-size: 20px;
+    background-color: var(--sec-color);
+    margin-bottom: 20px;
+}
+.container .quiz-app .question{
+    background-color: var(--sec-color);
+    padding: 2px 15px;
+
+}
+.container .quiz-app .answers{
+    padding:0 20px;
+    background-color: var(--sec-color);
+   padding-bottom: 20px;
+}
+.container .quiz-app .answers .choice{
+    font: bold;
+    padding: 8px;
+    background-color: var(--main-color);
+}
+.container .quiz-app .answers .choice:not(:last-child){
+    border-bottom: 1px solid #d6dbdc;
+}
+/* .container .quiz-app .answers .choice input[type="radio"]:focus{
+    outline: none;
+    border: none;
+    box-shadow: none;
+} */
+.container .quiz-app .answers .choice label{
+    cursor: pointer;
+}
+.container .quiz-app .answers .choice input[type="Radio"]:checked + label{
+    color: var(--third-color);
+}
+.container .quiz-app .submit-button{
+    background-color: var(--third-color);
+    width: 100%;
+    padding: 10px;
+    border: none;
+    color: var(--sec-color);
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 20px auto;
+    outline: none;
+}
+.container .quiz-app .submit-button:focus{
+    outline: none;
+}
+.container .quiz-app .bullets .spans{
+    display: flex;
+    justify-content:flex-start;
+    gap: 10px;
+    background-color: var(--sec-color);
+    padding: 15px;
+}
+.container .quiz-app .bullets .spans span{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: var(--main-color);
+}
+.container .quiz-app .bullets .spans span.on{
+    background-color: var(--third-color);
+}
+.container .quiz-app{
+    position: relative;
+}
+.container .quiz-app .count-down{
+    position: absolute;
+    right: 0;
+    bottom: -35px;
+}
+.container .result{
+    padding: 5px;
+    margin-top: 10px;
+
+}
+.container .result span{
+    font-weight: bold;
+}
+.container .result span.perfect{
+    color: rgb(30, 134, 178);
+}
+.container .result span.good{
+    color: rgb(46, 152, 101);
+}
+.container .result span.bad{
+    color: rgb(214, 71, 71);
+}
