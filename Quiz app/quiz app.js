@@ -5,10 +5,13 @@ let question=document.querySelector('.question');
 let answers=document.querySelector('.answers');
 let submitButton=document.querySelector('.submit-button');
 let resultMsg=document.querySelector('.result');
+let countDown=document.querySelector('.count-down');
 
 
 let currentQuestion=0;
 let correctAnswers =0;
+let countDownInterval;
+let duration =3;
 
 function getQuestions () {
   let myRequest = new XMLHttpRequest();
@@ -24,6 +27,9 @@ function getQuestions () {
 
         //get the quiz from json to show it on webPage
         createQuesions(questionsObject[currentQuestion],questionsCount);
+
+        //for the first question
+        countdown(duration,questionsCount);
 
 
         submitButton.onclick = function (e) {
@@ -49,8 +55,9 @@ function getQuestions () {
 
             //afetr reaching to the last question
             showResults(questionsCount);
-           
 
+            countdown(duration,questionsCount);
+           
         };
 
     }
@@ -194,3 +201,25 @@ function showResults(count){
         // resultMsg.style.marginTop="10px";
     }
 } 
+
+function countdown(duration,count){
+
+    clearInterval(countDownInterval);
+    if(currentQuestion < count){
+        let minutes, seconds;
+        countDownInterval= setInterval(function(){
+            minutes =parseInt(duration / 60);
+            seconds =parseInt(duration % 60);
+
+            minutes =minutes <10 ? `0${minutes}` : minutes;
+            seconds =seconds <10 ? `0${seconds}` : seconds;
+
+            countDown.innerHTML=`${minutes}:${seconds}`;
+
+            if(--duration < 0){
+                clearInterval(countDownInterval);
+                submitButton.click();
+            }
+        },1000);
+    }
+}
