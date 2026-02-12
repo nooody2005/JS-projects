@@ -87,14 +87,17 @@ body{
     position: relative;
 }
 .container .quiz-app .count-down{
-    position: absolute;
-    right: 0;
-    bottom: -35px;
+    /* position: absolute;
+    right: 5px;
+    bottom: -50px; */
+    float: right;
+    margin-top: 10px;
+    margin-right: 5px;
 }
 .container .result{
-    padding: 5px;
-    margin-top: 10px;
-
+    padding-bottom: 10px;
+    padding: 10px;
+    /* margin-bottom: 10px; */
 }
 .container .result span{
     font-weight: bold;

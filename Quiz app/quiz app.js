@@ -47,6 +47,10 @@ function getQuestions () {
             //handle Bullets class
             hadleBullets();
 
+            //afetr reaching to the last question
+            showResults(questionsCount);
+           
+
         };
 
     }
@@ -78,53 +82,56 @@ function createBullets(num){
 
 function createQuesions(obj,count){
 
-    //create the question place
-    let questionTitle=document.createElement('h2');
+    if(currentQuestion < count){
 
-    //get the question title from json
-    let questionText=document.createTextNode(obj.title);
+        //create the question place
+        let questionTitle=document.createElement('h2');
 
-    //append question text in question div
-    questionTitle.appendChild(questionText);
+        //get the question title from json
+        let questionText=document.createTextNode(obj.title);
 
-    //append question in the main container
-    question.appendChild(questionTitle);
+        //append question text in question div
+        questionTitle.appendChild(questionText);
 
-    for (let i=1; i<=4; i++){
+        //append question in the main container
+        question.appendChild(questionTitle);
 
-        //create choice div
-        let choice=document.createElement('div');
-        //add class 
-        choice.classList.add('choice');
-        //create radio
-        let radio=document.createElement('input');
-        //select radio type + id + name + text(dataset)
-        radio.type='radio';
-        radio.id=`answer_${i}`;
-        radio.name='choice';
-        radio.dataset.answer=obj[`answer_${i}`];
-        // radio.dataset.answer=obj.answer_${i};
+        for (let i=1; i<=4; i++){
 
-        //make the first choice selected
-        if(i === 1){
-            radio.checked=true;
+            //create choice div
+            let choice=document.createElement('div');
+            //add class 
+            choice.classList.add('choice');
+            //create radio
+            let radio=document.createElement('input');
+            //select radio type + id + name + text(dataset)
+            radio.type='radio';
+            radio.id=`answer_${i}`;
+            radio.name='choice';
+            radio.dataset.answer=obj[`answer_${i}`];
+            // radio.dataset.answer=obj.answer_${i};
+
+            //make the first choice selected
+            if(i === 1){
+                radio.checked=true;
+            }
+
+            //make label for radio input
+            let label=document.createElement('label');
+            label.htmlFor=`answer_${i}`;
+
+            //create text for label
+            let labelText=document.createTextNode(obj[`answer_${i}`]);
+            label.appendChild(labelText);
+
+
+            //append radio in the choice div
+            choice.appendChild(radio);
+            choice.appendChild(label);
+
+            //append choice in answers div
+            answers.appendChild(choice);
         }
-
-        //make label for radio input
-        let label=document.createElement('label');
-        label.htmlFor=`answer_${i}`;
-
-        //create text for label
-        let labelText=document.createTextNode(obj[`answer_${i}`]);
-        label.appendChild(labelText);
-
-
-        //append radio in the choice div
-        choice.appendChild(radio);
-        choice.appendChild(label);
-
-        //append choice in answers div
-        answers.appendChild(choice);
     }
 }
 
@@ -142,7 +149,6 @@ function checkAnswer(rightAnswer,count){
     }
     if(theChoosenAnswer === rightAnswer){
         correctAnswers++;
-         resultMsg.innerHTML='<span class="perfect">perfect </span> you are good';
     }
 
 }
@@ -158,3 +164,33 @@ function hadleBullets(){
     });
     
 }
+
+function showResults(count){
+
+    let theResults;
+
+    if(currentQuestion === count){
+        question.remove();
+        answers.remove();
+        submitButton.remove();
+        bulletsContainer.remove();
+   
+
+        if(correctAnswers === count){
+            theResults=`<span class="perfect">Perfect</span>, ${correctAnswers} from ${count}`;
+        }
+
+        if(correctAnswers >= count/2 && correctAnswers <count){
+            theResults=`<span class="good">Good</span>, ${correctAnswers} from ${count}`;
+        }
+
+        if(correctAnswers < count/2){
+            theResults=`<span class="bad">Bad</span>, ${correctAnswers} from ${count}`;
+        }
+
+        resultMsg.innerHTML=theResults;
+        // resultMsg.style.padding="10px";
+        resultMsg.style.backgroundColor="white";
+        // resultMsg.style.marginTop="10px";
+    }
+} 
