@@ -1,0 +1,46 @@
+.container{
+    width: 500px;
+    margin:50px auto;
+}
+.container .trial{
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+    background-color: rgb(215, 220, 220);
+    margin: 20px;
+    height: 100px;
+}
+.container .trial .box{
+    width: 20%;
+    height: 100%;
+    cursor: pointer;
+}
+.container .trial .box.active{
+    position: relative;
+}
+.container .trial .box.active::before{
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left:0;
+    background-color: rgba(207, 217, 217, 0.616);
+}
+.container .trial .box.red{
+    background-color: red;
+}
+.container .trial .box.blue{
+    background-color: blue;
+}
+.container .trial .box.green{
+    background-color: green;
+}
+.container .trial .box.yellow{
+    background-color: yellow;
+}
+.container .result{
+    width: 100%;
+    height: 300px;
+    /* background-color: red; */
+}
