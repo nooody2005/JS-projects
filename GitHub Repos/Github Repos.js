@@ -58,7 +58,7 @@ function getRepos(){
             theUrl.appendChild(theUrlText);
 
             //make the url
-            theUrl.href=`https://github.com/nooody2005/${repo.name}`;
+            theUrl.href=`https://github.com/${theInput.value}/${repo.name}`;
 
             //Add class on Main Div
             mainDiv.className='repo-box';
